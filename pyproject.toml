@@ -1,0 +1,26 @@
+[tool.semantic_release]
+branch = "main"
+version_variable = [
+        "scripts/__init__.py:__version__"
+]
+changelog_file = "CHANGELOG.md"
+upload_to_pypi = false
+upload_to_release = false
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+float_to_top = false
+
+[tool.flake8]
+select = "ANN,B,B9,C,C4,D,DAR,F,S,SC"
+ignore = "ANN101,S101"
+per-file-ignores = "tests/custom_tmp_file.py:B950"
+exclude = "docs/conf.py"
+max-line-length = 88
+max-complexity = 10
+docstring-convention = "numpy"
+docstring-style = "numpy"
+strictness = "short"
+dictionaries = "en_US,python,technical"
+spellcheck-targets = "comments"

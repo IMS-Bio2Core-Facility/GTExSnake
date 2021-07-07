@@ -1,0 +1,9 @@
+gencode_url: "http://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_26/gencode.v26.annotation.gtf.gz"
+mane_url: "https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/release_0.93/MANE.GRCh38.v0.93.summary.txt.gz"
+region: "Brain_Hypothalamus"
+gene_ids:
+  - "ASCL1"
+  - "BSX"
+  - "CXXC5"
+  - "DLX1"
+  - "ESR1"

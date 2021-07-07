@@ -1,0 +1,9 @@
+name: process
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python==3.9.5
+  - pandas==1.2.4
+  - openpyxl==3.0.7
