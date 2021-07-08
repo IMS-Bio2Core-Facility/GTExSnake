@@ -1,17 +1,19 @@
 # Snakemake Workflow: GTExSnake
 
-```{warning}
-This pipeline will not currently run.
-The home repository [here](https://github.com/IMS-Bio2Core-Facility/BIC086)
-is currently being refactored to split the project into 2 repositories:
-1) This one, containing the pipeline.
-2) A forthcoming one, to be a pip package containing the code.
-```
+> :warning: **This workflow will not currently run**
+> The home repository [here][home]
+> is currently being refactored to split the project into 2 repositories:
+>
+> 1) This one, containing the pipeline.
+> 2) A forthcoming one, to be a pip package containing the code.
 
 A fully concurrent pipeline for querying transcript-level GTEx data in specific tissues
 
 If you find the project useful,
-leaves us a star on [github](HOLDING)!
+leaves us a star on [github][stars]!
+
+[home]: https://github.com/IMS-Bio2Core-Facility/BIC086 "Original repository"
+[stars]: HOLDING "Stargazers"
 
 ## Motivation
 
@@ -27,14 +29,14 @@ Here, we query a list of genes against a region-specific subset of GTEx.
 
 ### Necessary Software
 
-This pipeline needs [conda](https://docs.conda.io/en/latest/)
-and [snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html)
+This pipeline needs [conda][conda]
+and [snakemake][snakemake]
 installed,
-and runs best if you also have [singularity](https://sylabs.io/singularity/)
+and runs best if you also have [singularity][singularity]
 installed,
 though it's not required.
 
-Snakemake recommends using [mambaforge](https://github.com/conda-forge/miniforge#mambaforge)
+Snakemake recommends using [mambaforge][mambaforge]
 as your base conda,
 which I would also recommend.
 Installation instructions are at the above link.
@@ -49,11 +51,17 @@ Singularity can be a bit of a nuisance to install
 I would recommend a Linux OS
 (it's most straightforward on CentOS/RHEL  - hello AWS!)
 and following the instructions in their repository
-[here](https://github.com/sylabs/singularity/blob/master/INSTALL.md).
+[here][sing_install].
 If you decide not to install Singularity,
 don't worry!
 Snakemake will still run each step in its own Conda environment,
 it just won't put each Conda environment in a container.
+
+[conda]: https://docs.conda.io/en/latest/ "Conda"
+[snakemake]: https://snakemake.readthedocs.io/en/stable/getting_started/installation.html "Snakemake"
+[singularity]: https://sylabs.io/singularity/ "Singularity"
+[mambaforge]: https://github.com/conda-forge/miniforge#mambaforge "Mambaforge"
+[sing_install]: https://github.com/sylabs/singularity/blob/master/INSTALL.md "Singularity Install"
 
 ### Get the Source Code
 
@@ -61,13 +69,13 @@ Navigate to our [release](HOLDING)
 page on github and download the most recent version.
 The following will do the trick:
 
-```{code-block} shell
- curl -s https://api.github.com/repos/IMS-Bio2Core-Facility/BIC086/releases/latest |
- grep tarball_url |
- cut -d " " -f 4 |
- tr -d '",' |
- xargs -n1 curl -sL |
- tar xzf -
+```shell
+curl -s https://api.github.com/repos/IMS-Bio2Core-Facility/BIC086/releases/latest |
+grep tarball_url |
+cut -d " " -f 4 |
+tr -d '",' |
+xargs -n1 curl -sL |
+tar xzf -
 ```
 
 After querying the github api to get the most recent release information,
@@ -82,14 +90,13 @@ Alternatively,
 for the bleeding edge,
 please clone the repo like so:
 
-```{code-block} shell
+```shell
 git clone https://github.com/IMS-Bio2Core-Facility/BIC086
 ```
 
-```{warning} Heads Up!
-The bleeding edge may not be stable,
-as it contains all active development.
-```
+> :warning: **Heads Up!**
+> The bleeding edge may not be stable,
+> as it contains all active development.
 
 However you choose to install it,
 `cd` into the directory and activate your snakemake conda environment.
@@ -100,14 +107,14 @@ Once you've installed the above software,
 and fetched the code,
 running the pipeline is as simple as:
 
-```{code-block} shell
+```shell
 snakemake --use-conda --use-singularity --cores 6
 ```
 
 If you aren't using `singularity`,
 then leave off the apropriate flag, as so:
 
-```{code-block} shell
+```shell
 snakemake --use-conda --cores 6
 ```
 
@@ -116,7 +123,9 @@ And `snakemake` will automatically leave it off.
 ### Configuration
 
 For more on how to configure your custom run,
-please see [config/README.md](config/README.md).
+please see [config/README.md][config].
+
+[config]: config/README.md
 
 ## Reproducibility
 
@@ -130,9 +139,9 @@ as we used them.
 
 We also strive to make this pipeline as FAIR/O compliant as possible.
 To that end,
-it is available both on the [Snakemake repository](HOLDING)
-and [Workflowhub](HOLDING),
-in addition to the usual availablility on [Github](HOLDING).
+it is available both on the [Snakemake workflow catalog][snake_catalog]
+and [Workflowhub][workflowhub],
+in addition to the usual availablility on [Github][repo].
 
 Unfortunately,
 any query to an unstable API is inherently not reproducible.
@@ -141,17 +150,16 @@ changes in BioMart or GTEx could impact the results.
 We recognise this as an inherent limitation,
 and will do our best to keep abreast of API changes that impact the pipeline.
 
-.. _nox: https://nox.thea.codes/en/stable/
-.. _pre-commit: https://pre-commit.com/
+[snake_catalog]: HOLDING
+[workflowhub]: HOLDING
+[repo]: HOLDING
 
-Data
-----
+## Data
 
 The pipeline requires no input data other than a list of gene names specified in
-``configuration/snakemake.yaml``.
+`configuration/snakemake.yaml`.
 
-References
-----------
+## References
 
 It is surprisingly challenging to align RefSeq IDs and Ensembl IDs.
 This is further complicated because GTEx uses Gencode26 under the hood.
@@ -160,15 +168,17 @@ it actually proved quite frustrating to find the desired version numbers for eac
 To combat this,
 this pipeline takes 3 different approaches in parallel:
 
-#. Gencode v26 GTF annotations are downloaded from EBI,
+1. Gencode v26 GTF annotations are downloaded from EBI,
    so the user only needs to supply gene names.
-#. A query is made to BioMart to retrieve RefSeq IDs for each ENST returned by GTEx.
-#. Data from `MANE`_ is added to help identify consensus transcripts.
+1. A query is made to BioMart to retrieve RefSeq IDs for each ENST returned by GTEx.
+1. Data from [MANE][mane] is added to help identify consensus transcripts.
 
-.. _MANE: https://www.ncbi.nlm.nih.gov/refseq/MANE/
+[MANE]: https://www.ncbi.nlm.nih.gov/refseq/MANE/ "MANE"
 
-Contributing
-------------
+## Contributing
 
 If you are interested in helping us improve the pipeline,
-pleare see our guides on :ref:`contributing`.
+pleare see our guides on [contributing][contributing]
+and be sure to abide by our [code of conduct][conduct]!
+
+[contributing]: CONTRIBUTING.md

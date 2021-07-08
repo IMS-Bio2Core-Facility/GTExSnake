@@ -1,10 +1,9 @@
 # Configuration
 
-```{note}
-If you want to run this pipeline multpile times,
-then be sure to move or delete the final `results/process/sorted_isoforms.xlsx` file.
-Snakemake will not re-run a pipeline if it detects the output file.
-```
+> :warning: **Re-running a snakemake workflow**
+> If you want to run this pipeline multpile times,
+> then be sure to move or delete the final `results/process/sorted_isoforms.xlsx` file.
+> Snakemake will not re-run a pipeline if it detects the output file.
 
 There are currently five (5) points where the user can customise the pipeline:
 
@@ -27,7 +26,7 @@ You will almost certainly have a different gene list than me!
 If its short,
 you can specify it as a parameter like so:
 
-```{code-block} shell
+```shell
 snakemake --use-conda --use-singularity --cores 6 --config gene_ids=\["GENE1","GENE2"\]
 ```
 
@@ -40,15 +39,14 @@ The same goes for your region of interest.
 It can be specified as the `region` parameter in `configuration/snakemake.yaml`,
 or passed as below:
 
-```{code-block} shell
+```shell
 snakemake --use-conda --use-singularity --cores 6 --config region="Brain_Hypothalamus"
 ```
 
-```{note} Accepted Regions
-GTEx is picky about formatting,
-so be sure your region is from their approved list.
-You can find that list [here](HOLDING).
-```
+> :warning: Accepted Regions
+> GTEx is picky about formatting,
+> so be sure your region is from their approved list.
+> You can find that list [here](HOLDING).
 
 ## Gencode URL
 
