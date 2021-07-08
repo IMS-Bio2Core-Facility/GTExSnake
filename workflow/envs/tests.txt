@@ -1,9 +1,0 @@
-pytest==6.2.4
-pytest-clarity==0.2.0a1
-six==1.16.0
-pytest-sugar==0.9.4
-pytest-cov==2.12.0
-coverage==5.5
-typeguard==2.12.0
-pandas==1.2.4
-bioservices==1.7.11

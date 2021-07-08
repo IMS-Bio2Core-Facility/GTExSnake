@@ -15,7 +15,12 @@ CONDA_PARAMS: list[str] = ["-c", "bioconda", "-c", "conda-forge", "--file"]
 nox.options.stop_on_first_error = True
 nox.options.default_venv_backend = "virtualenv"
 nox.options.reuse_existing_virtualenvs = False
-nox.options.sessions = ["form", "lint", "type", "security", "doc_tests"]
+nox.options.sessions = [
+    "form",
+    "lint",
+    "type",
+    "security",
+]
 
 
 @nox.session(python=VERSIONS[0])
@@ -56,39 +61,3 @@ def security(session: Session) -> None:
     args = session.posargs or []
     session.conda_install(*CONDA_PARAMS, "environments/security.txt")
     session.run("safety", "check", "--bare", *args)
-
-
-@nox.session(python=VERSIONS)
-def doc_tests(session: Session) -> None:
-    """Test the docs.
-
-    As xdoctest does not seem to detect if multiple sources are passed,
-    session run must be called over each source manually.
-
-    Parameters
-    ----------
-    session : Session
-        nox session
-
-    """
-    args = session.posargs or []
-    command = [
-        "python",
-        "-m",
-        "xdoctest",
-        "--verbose",
-        "2",
-        "--report",
-        "cdiff",
-        "--nocolor",
-    ]
-    session.install(*PIP_PARAMS, "environments/doc_tests.txt")
-    for x in LOCATIONS:
-        session.run(*command, x, *args)
-
-
-@nox.session(python="3.9")
-def doc_build(session: Session) -> None:
-    """Build the docs."""
-    session.install(*PIP_PARAMS, "environments/doc_build.txt")
-    session.run("sphinx-build", "docs", "docs/_build")

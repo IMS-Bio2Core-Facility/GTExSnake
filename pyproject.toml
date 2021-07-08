@@ -15,8 +15,6 @@ float_to_top = false
 [tool.flake8]
 select = "ANN,B,B9,C,C4,D,DAR,F,S,SC"
 ignore = "ANN101,S101"
-per-file-ignores = "tests/custom_tmp_file.py:B950"
-exclude = "docs/conf.py"
 max-line-length = 88
 max-complexity = 10
 docstring-convention = "numpy"
