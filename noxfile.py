@@ -27,7 +27,7 @@ nox.options.sessions = [
 def form(session: Session) -> None:
     """Format code with isort and black."""
     args = session.posargs or LOCATIONS
-    session.install(*PIP_PARAMS, "environments/form.txt")
+    session.install(*PIP_PARAMS, "workflow/envs/form.txt")
     session.run("isort", *args)
     session.run("black", *args)
 
@@ -36,7 +36,7 @@ def form(session: Session) -> None:
 def lint(session: Session) -> None:
     """Lint files with flake8."""
     args = session.posargs or LOCATIONS
-    session.install(*PIP_PARAMS, "environments/lint.txt")
+    session.install(*PIP_PARAMS, "workflow/envs/lint.txt")
     session.run("pflake8", *args)
 
 
@@ -44,7 +44,7 @@ def lint(session: Session) -> None:
 def type(session: Session) -> None:
     """Type check files with mypy."""
     args = session.posargs or LOCATIONS
-    session.install(*PIP_PARAMS, "environments/type.txt")
+    session.install(*PIP_PARAMS, "workflow/envs/type.txt")
     session.run(
         "mypy",
         "--ignore-missing-imports",
@@ -59,5 +59,5 @@ def type(session: Session) -> None:
 def security(session: Session) -> None:
     """Check security safety."""
     args = session.posargs or []
-    session.conda_install(*CONDA_PARAMS, "environments/security.txt")
+    session.conda_install(*CONDA_PARAMS, "workflow/envs/security.txt")
     session.run("safety", "check", "--bare", *args)
