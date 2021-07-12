@@ -11,8 +11,8 @@ so as to only keep the data from the GTEx query.
 """
 if __name__ == "__main__":
     import pandas as pd
-    from logs.get_logger import get_logger
-    from multithreading.process import Pipeline
+    from gtexquery.logs.get_logger import get_logger
+    from gtexquery.multithreading.process import Pipeline
 
     INS = snakemake.input  # noqa: F821
     LOGS = snakemake.log[0]  # noqa: F821

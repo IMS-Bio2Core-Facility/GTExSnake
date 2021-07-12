@@ -34,7 +34,7 @@ rule mane:
         benchmark:
                 "benchmarks/mane.txt"
         conda:
-                "workflows/envs/mane.yml"
+                "envs/mane.yaml"
         script:
                 "scripts/mane.py"
 
@@ -53,7 +53,7 @@ rule request:
         threads:
                 workflow.cores
         conda:
-                "workflows/envs/request.yml"
+                "envs/request.yaml"
         script:
                 "scripts/request.py"
 
@@ -69,7 +69,7 @@ rule biomart:
         threads:
                 workflow.cores
         conda:
-                "workflows/envs/biomart.yml"
+                "envs/biomart.yaml"
         script:
                 "scripts/biomart.py"
 
@@ -87,6 +87,6 @@ rule process:
         threads:
                 workflow.cores
         conda:
-                "workflows/envs/process.yml"
+                "envs/process.yaml"
         script:
                 "scripts/process.py"

@@ -8,3 +8,6 @@ dependencies:
   - pandas==1.2.4
   - bioservices==1.7.11
   - lxml==4.6.3
+  - pip==21.1.3
+  - pip:
+    - gtexquery==0.2.2

@@ -24,8 +24,8 @@ if __name__ == "__main__":
     import concurrent.futures
 
     # import pandas as pd
-    from logs.get_logger import get_logger
-    from multithreading.biomart import concurrent_biomart
+    from gtexquery.logs.get_logger import get_logger
+    from gtexquery.multithreading.biomart import concurrent_biomart
 
     INPUTS = snakemake.input  # noqa: F821
     LOGS = snakemake.log[0]  # noqa: F821

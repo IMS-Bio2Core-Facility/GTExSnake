@@ -17,7 +17,7 @@ as GTEx does not use the most recent Gencode.
 if __name__ == "__main__":
 
     import pandas as pd
-    from logs.get_logger import get_logger
+    from gtexquery.logs.get_logger import get_logger
 
     LOGS = snakemake.log[0]  # noqa: F821
     OUTS = snakemake.output  # noqa: F821
