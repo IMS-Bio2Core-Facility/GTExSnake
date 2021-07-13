@@ -1,11 +1,11 @@
 [tool.semantic_release]
 branch = "main"
 version_variable = [
-        "scripts/__init__.py:__version__"
+        "workflow/scripts/__init__.py:__version__"
 ]
 changelog_file = "CHANGELOG.md"
 upload_to_pypi = false
-upload_to_release = false
+upload_to_release = true
 
 [tool.isort]
 profile = "black"
