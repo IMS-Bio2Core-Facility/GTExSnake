@@ -5,7 +5,7 @@ version_variable = [
 ]
 changelog_file = "CHANGELOG.md"
 upload_to_pypi = false
-upload_to_release = true
+upload_to_release = false
 
 [tool.isort]
 profile = "black"
