@@ -17,9 +17,11 @@ def test_process():
         workdir = Path(tmpdir) / "workdir"
         data_path = PurePosixPath(".tests/unit/process/data")
         expected_path = PurePosixPath(".tests/unit/process/expected")
+        config_path = PurePosixPath(".tests/unit/config")
 
         # Copy data to the temporary workdir.
         shutil.copytree(data_path, workdir)
+        shutil.copytree(config_path, workdir / "config")
 
         # dbg
         print("results/process/sorted_isoforms.xlsx", file=sys.stderr)
@@ -31,9 +33,11 @@ def test_process():
                 "-m",
                 "snakemake",
                 "results/process/sorted_isoforms.xlsx",
-                "-F",
                 "-j1",
                 "--keep-target-files",
+                "--use-conda",
+                "--conda-frontend",
+                "mamba",
                 "--directory",
                 workdir,
             ]
@@ -43,4 +47,4 @@ def test_process():
         # To modify this behavior, you can inherit from common.OutputChecker in here
         # and overwrite the method `compare_files(generated_file, expected_file),
         # also see common.py.
-        common.OutputChecker(data_path, expected_path, workdir).check()
+        common.ShaChecker(data_path, expected_path, workdir).check()

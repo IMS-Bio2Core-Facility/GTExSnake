@@ -17,13 +17,15 @@ def test_biomart():
         workdir = Path(tmpdir) / "workdir"
         data_path = PurePosixPath(".tests/unit/biomart/data")
         expected_path = PurePosixPath(".tests/unit/biomart/expected")
+        config_path = PurePosixPath(".tests/unit/config")
 
         # Copy data to the temporary workdir.
         shutil.copytree(data_path, workdir)
+        shutil.copytree(config_path, workdir / "config")
 
         # dbg
         print(
-            "results/biomart/ASCL1_message.csv results/biomart/BSX_message.csv results/biomart/CXXC5_message.csv results/biomart/DLX1_message.csv results/biomart/ESR1_message.csv",
+            "results/biomart/ASCL1_message.csv results/biomart/BSX_message.csv",
             file=sys.stderr,
         )
 
@@ -33,10 +35,12 @@ def test_biomart():
                 "python",
                 "-m",
                 "snakemake",
-                "results/biomart/ASCL1_message.csv results/biomart/BSX_message.csv results/biomart/CXXC5_message.csv results/biomart/DLX1_message.csv results/biomart/ESR1_message.csv",
-                "-F",
+                "results/biomart/ASCL1_message.csv",  # errors if 2 files specified
                 "-j1",
                 "--keep-target-files",
+                "--use-conda",
+                "--conda-frontend",
+                "mamba",
                 "--directory",
                 workdir,
             ]
@@ -46,4 +50,4 @@ def test_biomart():
         # To modify this behavior, you can inherit from common.OutputChecker in here
         # and overwrite the method `compare_files(generated_file, expected_file),
         # also see common.py.
-        common.OutputChecker(data_path, expected_path, workdir).check()
+        common.ShaChecker(data_path, expected_path, workdir).check()

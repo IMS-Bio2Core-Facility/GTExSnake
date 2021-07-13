@@ -17,13 +17,15 @@ def test_request():
         workdir = Path(tmpdir) / "workdir"
         data_path = PurePosixPath(".tests/unit/request/data")
         expected_path = PurePosixPath(".tests/unit/request/expected")
+        config_path = PurePosixPath(".tests/unit/config")
 
         # Copy data to the temporary workdir.
         shutil.copytree(data_path, workdir)
+        shutil.copytree(config_path, workdir / "config")
 
         # dbg
         print(
-            "results/request/ASCL1_message.csv results/request/BSX_message.csv results/request/CXXC5_message.csv results/request/DLX1_message.csv results/request/ESR1_message.csv",
+            "results/request/ASCL1_message.csv results/request/BSX_message.csv",
             file=sys.stderr,
         )
 
@@ -33,10 +35,13 @@ def test_request():
                 "python",
                 "-m",
                 "snakemake",
-                "results/request/ASCL1_message.csv results/request/BSX_message.csv results/request/CXXC5_message.csv results/request/DLX1_message.csv results/request/ESR1_message.csv",
-                "-F",
+                "results/request/ASCL1_message.csv",
+                "results/request/BSX_message.csv",
                 "-j1",
                 "--keep-target-files",
+                "--use-conda",
+                "--conda-frontend",
+                "mamba",
                 "--directory",
                 workdir,
             ]
@@ -46,4 +51,4 @@ def test_request():
         # To modify this behavior, you can inherit from common.OutputChecker in here
         # and overwrite the method `compare_files(generated_file, expected_file),
         # also see common.py.
-        common.OutputChecker(data_path, expected_path, workdir).check()
+        common.ShaChecker(data_path, expected_path, workdir).check()
