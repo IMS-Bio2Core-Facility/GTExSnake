@@ -46,7 +46,8 @@ snakemake --use-conda --use-singularity --cores 6 --config region="Brain_Hypotha
 > :warning: Accepted Regions
 > GTEx is picky about formatting,
 > so be sure your region is from their approved list.
-> You can find that list [here](HOLDING).
+> You can find that list [here][tissue_regions]
+> under `tissueSiteDetailId`.
 
 ## Gencode URL
 
@@ -61,3 +62,5 @@ It *should* be up-to-date.
 If we are late on an update,
 or you would like to use either an older or new version,
 change this.
+
+[tissue_regions]: https://gtexportal.org/home/api-docs/#!/expression/medianTranscriptExpression "GTEx Regions"

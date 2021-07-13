@@ -8,7 +8,7 @@ where apropriate.
 Retrieves the Gencode v26 annotations.
 
 The website from which the annotations are retrieved is specified in
-[config/config.yaml][config]
+[config/config.yaml](../config/config.yaml)
 under `gencode_url` and can be altered by the user.
 
 This rule retrieves the annotated gtf file using `wget`
@@ -22,7 +22,7 @@ before the file is directed to `resources/gencode.v26.annotation`.
 Download the summary file from the MANE project.
 
 The website from which the annotations are retrieved is specified in
-[config/config.yaml][config]
+[config/config.yaml](../config/config.yaml)
 under `mane_url` and can be altered by the user.
 
 These comments are taken from the `workflow/scripts/mane.py` docstring:
@@ -49,8 +49,9 @@ respectively,
 and can be altered by the user.
 
 Concurrency is achieved by using a `concurrent.futures.ThreadPoolExecutor`
-to map the `gtex_reguest` function from the `HOLDING` package over the
-region, genes, and output files.
+to map the `gtex_reguest` function from the
+[GTExQuery][gtexquery]
+package over the region, genes, and output files.
 
 These comments are taken from `workflow/scripts/request.py` docstring:
 
@@ -86,8 +87,9 @@ Use BioMart to convert ENST IDs to RefSeq IDs.
 There are no user specified parameters for this step.
 
 Concurrency is achieved by using a `concurrent.futures.ThreadPoolExecutor`
-to map the `concurrent_biomart` function from the `HOLDING` package over the
-input and output files.
+to map the `concurrent_biomart` function from the
+[GTExQuery][gtexquery]
+package over the input and output files.
 
 These comments are taken from `workflow/scripts/biomart.py` docstring:
 
@@ -114,8 +116,9 @@ Process data to XLSX.
 
 There are no user specified parameters for this step.
 
-Concurrency is achieved using the `Pipeline` class from the `HOLDING` package
-to map the file reading, merging, and writing over the
+Concurrency is achieved using the `Pipeline` class from the
+[GTExQuery][gtexquery]
+package to map the file reading, merging, and writing over the
 input and output files.
 
 These comments are taken from `workflow/scripts/process.py` docstring:
@@ -128,7 +131,7 @@ These comments are taken from `workflow/scripts/process.py` docstring:
 > the MANE data is added using a left merge,
 > so as to only keep the data from the GTEx query.
 
-[config]: config/config.yaml "Configuration File"
 [mane]: https://www.ncbi.nlm.nih.gov/refseq/MANE/ "MANE"
 [session]: https://docs.python-requests.org/en/master/user/advanced/ "Requests Package"
 [bioservices]: https://github.com/cokelaer/bioservices "Bioservices Package"
+[gtexquery]: https://github.com/IMS-Bio2Core-Facility/GTExQuery "GTExQuery"

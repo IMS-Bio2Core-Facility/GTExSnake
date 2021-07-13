@@ -1,19 +1,17 @@
 # Snakemake Workflow: GTExSnake
 
-> :warning: **This workflow will not currently run**
-> The home repository [here][home]
-> is currently being refactored to split the project into 2 repositories:
->
-> 1) This one, containing the pipeline.
-> 2) A forthcoming one, to be a pip package containing the code.
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![CI/CD](https://github.com/IMS-Bio2Core-Facility/GTExQuery/actions/workflows/cicd.yml/badge.svg)](https://github.com/IMS-Bio2Core-Facility/GTExSnake/actions/workflows/cicd.yml)
+[![Codestyle: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Codestyle: snakefmt](https://img.shields.io/badge/code%20style-snakefmt-000000.svg)](https://github.com/snakemake/snakefmt)
 
 A fully concurrent pipeline for querying transcript-level GTEx data in specific tissues
 
 If you find the project useful,
 leaves us a star on [github][stars]!
 
-[home]: https://github.com/IMS-Bio2Core-Facility/BIC086 "Original repository"
-[stars]: HOLDING "Stargazers"
+A list of changes can be found in our [CHANGELOG](./CHANGELOG.md).
 
 ## Motivation
 
@@ -57,15 +55,9 @@ don't worry!
 Snakemake will still run each step in its own Conda environment,
 it just won't put each Conda environment in a container.
 
-[conda]: https://docs.conda.io/en/latest/ "Conda"
-[snakemake]: https://snakemake.readthedocs.io/en/stable/getting_started/installation.html "Snakemake"
-[singularity]: https://sylabs.io/singularity/ "Singularity"
-[mambaforge]: https://github.com/conda-forge/miniforge#mambaforge "Mambaforge"
-[sing_install]: https://github.com/sylabs/singularity/blob/master/INSTALL.md "Singularity Install"
-
 ### Get the Source Code
 
-Navigate to our [release](HOLDING)
+Navigate to our [release][releases]
 page on github and download the most recent version.
 The following will do the trick:
 
@@ -123,9 +115,7 @@ And `snakemake` will automatically leave it off.
 ### Configuration
 
 For more on how to configure your custom run,
-please see [config/README.md][config].
-
-[config]: config/README.md
+please see [config/README.md](./config/README.md).
 
 ## Reproducibility
 
@@ -139,7 +129,7 @@ as we used them.
 
 We also strive to make this pipeline as FAIR/O compliant as possible.
 To that end,
-it is available both on the [Snakemake workflow catalog][snake_catalog]
+it will be available both on the [Snakemake workflow catalog][snake_catalog]
 and [Workflowhub][workflowhub],
 in addition to the usual availablility on [Github][repo].
 
@@ -149,10 +139,6 @@ Thus,
 changes in BioMart or GTEx could impact the results.
 We recognise this as an inherent limitation,
 and will do our best to keep abreast of API changes that impact the pipeline.
-
-[snake_catalog]: HOLDING
-[workflowhub]: HOLDING
-[repo]: HOLDING
 
 ## Data
 
@@ -173,12 +159,20 @@ this pipeline takes 3 different approaches in parallel:
 1. A query is made to BioMart to retrieve RefSeq IDs for each ENST returned by GTEx.
 1. Data from [MANE][mane] is added to help identify consensus transcripts.
 
-[MANE]: https://www.ncbi.nlm.nih.gov/refseq/MANE/ "MANE"
-
 ## Contributing
 
 If you are interested in helping us improve the pipeline,
-pleare see our guides on [contributing][contributing]
-and be sure to abide by our [code of conduct][conduct]!
+pleare see our guides on [contributing](./CONTRIBUTING.md)
+and be sure to abide by our [code of conduct](./CODE_OF_CONDUCT.md)!
 
-[contributing]: CONTRIBUTING.md
+[stars]: https://github.com/IMS-Bio2Core-Facility/GTExSnake/stargazers "Stargazers"
+[conda]: https://docs.conda.io/en/latest/ "Conda"
+[snakemake]: https://snakemake.readthedocs.io/en/stable/getting_started/installation.html "Snakemake"
+[singularity]: https://sylabs.io/singularity/ "Singularity"
+[mambaforge]: https://github.com/conda-forge/miniforge#mambaforge "Mambaforge"
+[sing_install]: https://github.com/sylabs/singularity/blob/master/INSTALL.md "Singularity Install"
+[releases]: https://github.com/IMS-Bio2Core-Facility/GTExSnake/releases "GTExSnake Releases"
+[snake_catalog]: HOLDING
+[workflowhub]: HOLDING
+[repo]: https://github.com/IMS-Bio2Core-Facility/GTExSnake "GTExSnake Repository"
+[MANE]: https://www.ncbi.nlm.nih.gov/refseq/MANE/ "MANE"

@@ -16,11 +16,9 @@ Welcome, friend!
 Open-source software isn't open open-source without the community.
 We appreciate your interest and welcome all contributions.
 While your here,
-we respectfully ask that you abide by our [code of conduct][conduct].
+we respectfully ask that you abide by our [code of conduct](./CODE_OF_CONDUCT.md).
 To help keep everything moving smoothly,
 we have a few guidelines.
-
-[conduct]: CODE_OF_CONDUCT.md "Code of conduct"
 
 ## Bugs
 
@@ -28,8 +26,6 @@ If you think you've found a bug,
 let us know [here][issues].
 We'll do our best to deal with it ASAP,
 but please be patient as we also work many other projects!
-
-[issues]: HOLDING "Issues"
 
 ## Developing
 
@@ -44,6 +40,7 @@ We use [conda][conda],
 [nox][nox],
 and [pre-commit][pre-commit]
 to handle environments, testing, and linting.
+Tests are handled by [snakemake][snakemake].
 Between them,
 they make sure that all checks run in isolated environments.
 Please make sure you activate them before making any changes,
@@ -61,18 +58,36 @@ When you commit a change,
 pre-commit will automatically run [black][black],
 [isort][isort],
 [mypy][mypy],
-and a suite of [flake8][flake8]-based linters.
+a suite of [flake8][flake8]-based linters,
+[snakefmt][snakefmt],
+and `snakemake --lint`.
 When you push a change,
 github actions will trigger a more robust suit using Nox,
-including security check.
+including security check and snakemake testing.
 
-[conda]: https://docs.conda.io/en/latest/ "Conda"
-[nox]: https://nox.thea.codes/en/stable/ "Nox"
-[pre-commit]: https://pre-commit.com/ "Pre-commit"
-[black]: https://github.com/psf/black "Black"
-[isort]: https://pycqa.github.io/isort/ "iSort"
-[mypy]: https://mypy.readthedocs.io/en/stable/index.html "Mypy"
-[flake8]: https://flake8.pycqa.org/en/latest/ "Flake8"
+Sometimes,
+its useful to run these lints manually.
+The easiest way to do this is to use pre-commit:
+
+```shell
+pre-commit run -a
+```
+
+Which will run all lints except the slower security and test checks.
+To run these,
+use:
+
+```shell
+nox -s security
+```
+
+for the former and:
+
+```
+HOLDING
+```
+
+for the latter.
 
 ### Commits
 
@@ -90,9 +105,6 @@ we use a python implementation of
 to handle that for you!
 Just commit using `cz commit` instead of `git commit`,
 and enjoy the magic!
-
-[psr]: https://github.com/relekang/python-semantic-release "Python Semantic Release"
-[cz]: https://commitizen-tools.github.io/commitizen/index.html "Commitizen"
 
 ### Documentation and Testing
 
@@ -123,10 +135,6 @@ necessary for a minimal run under `.tests/integration`.
 For further details,
 see Snakemake's own guides [here][unit_tests] and [here][repro].
 
-[docstrings]: https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html "Numpy Napoleon Docstrings"
-[unit_tests]: https://snakemake.readthedocs.io/en/stable/snakefiles/testing.html#snakefiles-testing "Snakemake Unit Tests"
-[repro]: https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html "Snakemake Reproducibility"
-
 ## Review
 
 Once your happy with your code,
@@ -155,4 +163,19 @@ Not a necessity,
 but for you terminal warriors out there,
 it just might help!
 
+[issues]: https://github.com/IMS-Bio2Core-Facility/GTExSnake/issues "Issues"
+[conda]: https://docs.conda.io/en/latest/ "Conda"
+[nox]: https://nox.thea.codes/en/stable/ "Nox"
+[pre-commit]: https://pre-commit.com/ "Pre-commit"
+[snakemake]: https://snakemake.readthedocs.io/en/stable/index.html "Snakemake"
+[black]: https://github.com/psf/black "Black"
+[isort]: https://pycqa.github.io/isort/ "iSort"
+[mypy]: https://mypy.readthedocs.io/en/stable/index.html "Mypy"
+[flake8]: https://flake8.pycqa.org/en/latest/ "Flake8"
+[snakefmt]: https://github.com/snakemake/snakefmt#github-actions "snakefmt"
+[psr]: https://github.com/relekang/python-semantic-release "Python Semantic Release"
+[cz]: https://commitizen-tools.github.io/commitizen/index.html "Commitizen"
+[docstrings]: https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html "Numpy Napoleon Docstrings"
+[unit_tests]: https://snakemake.readthedocs.io/en/stable/snakefiles/testing.html#snakefiles-testing "Snakemake Unit Tests"
+[repro]: https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html "Snakemake Reproducibility"
 [gh]: https://github.com/cli/cli
