@@ -84,7 +84,8 @@ nox -s security
 for the former and:
 
 ```
-HOLDING
+pytest .tests/unit # for unit tests
+pytest .tests/integration # for integration tests
 ```
 
 for the latter.
@@ -124,7 +125,14 @@ Then run:
 snakemake --generate-unit-tests
 ```
 
-This will create representative tests under `.tests/unit` for each step.
+Be careful,
+as this will reset all existing unit tests.
+These can be recovered with `git reset`,
+so don't worry.
+Then,
+using the existing tests as a guide,
+tweak your new tests until they run.
+
 For integration testing,
 include all the shell code,
 data,
