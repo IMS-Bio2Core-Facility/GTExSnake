@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import common
 
 
-def test_process():
+def test_integration():
 
     with TemporaryDirectory() as tmpdir:
         workdir = Path(tmpdir) / "workdir"

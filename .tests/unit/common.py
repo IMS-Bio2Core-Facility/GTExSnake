@@ -37,6 +37,9 @@ class OutputChecker:
                     or str(f).endswith(".txt")
                     or str(f).endswith(".log")
                     or str(f).startswith("config")
+                    or str(f).startswith(
+                        "resources"
+                    )  # these turn up in integration tests
                 ):
                     continue
                 if f in expected_files:
