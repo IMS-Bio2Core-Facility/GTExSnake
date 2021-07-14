@@ -24,7 +24,7 @@ def test_process():
         shutil.copytree(config_path, workdir / "config")
 
         # dbg
-        print("results/process/sorted_isoforms.xlsx", file=sys.stderr)
+        print("results/process/ASCL1_isoforms.csv", file=sys.stderr)
 
         # Run the test job.
         sp.check_output(
@@ -47,4 +47,4 @@ def test_process():
         # To modify this behavior, you can inherit from common.OutputChecker in here
         # and overwrite the method `compare_files(generated_file, expected_file),
         # also see common.py.
-        common.ShaChecker(data_path, expected_path, workdir).check()
+        common.OutputChecker(data_path, expected_path, workdir).check()

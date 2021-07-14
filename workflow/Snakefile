@@ -9,41 +9,6 @@ rule all:
         expand("results/process/{gene}_isoforms.csv", gene=config["gene_ids"]),
 
 
-rule ids:
-    params:
-        url=config["gencode_url"],
-    output:
-        lut="resources/gencode.v26.annotation",
-    log:
-        "logs/ids.log",
-    benchmark:
-        "benchmarks/ids.txt"
-    shell:
-        "wget -qO- {params.url} | "
-        "gzip -dc | "
-        "grep -w gene | "
-        "cut -f9 | "
-        "cut -d ' ' -f2,6 | "
-        "tr -d ';\"' "
-        "> {output.lut} "
-        "2> {log}"
-
-
-rule mane:
-    params:
-        url=config["mane_url"],
-    output:
-        data="resources/MANE.csv",
-    log:
-        "logs/mane.log",
-    benchmark:
-        "benchmarks/mane.txt"
-    conda:
-        "envs/mane.yaml"
-    script:
-        "scripts/mane.py"
-
-
 rule request:
     input:
         lut="resources/gencode.v26.annotation",
@@ -53,9 +18,9 @@ rule request:
     output:
         data=expand("results/request/{gene}_message.csv", gene=config["gene_ids"]),
     log:
-        "logs/request.log",
+        "results/logs/request.log",
     benchmark:
-        "benchmarks/request.txt"
+        "results/benchmarks/request.txt"
     threads: workflow.cores
     conda:
         "envs/request.yaml"
@@ -69,9 +34,9 @@ rule biomart:
     output:
         data=expand("results/biomart/{gene}_message.csv", gene=config["gene_ids"]),
     log:
-        "logs/biomart.log",
+        "results/logs/biomart.log",
     benchmark:
-        "benchmarks/biomart.txt"
+        "results/benchmarks/biomart.txt"
     threads: workflow.cores
     conda:
         "envs/biomart.yaml"
@@ -87,9 +52,9 @@ rule process:
     output:
         data=expand("results/process/{gene}_isoforms.csv", gene=config["gene_ids"]),
     log:
-        "logs/process.log",
+        "results/logs/process.log",
     benchmark:
-        "benchmarks/process.txt"
+        "results/benchmarks/process.txt"
     threads: workflow.cores
     conda:
         "envs/process.yaml"

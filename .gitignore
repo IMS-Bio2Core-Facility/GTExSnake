@@ -130,12 +130,8 @@ dmypy.json
 .pyre/
 
 # Local things
-data/
-results
-resources
+/results/
 .DS_store
-logs/
-benchmarks/
 .snakemake/
 Makefile
 .conda/

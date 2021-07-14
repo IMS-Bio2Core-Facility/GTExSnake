@@ -13,7 +13,7 @@ skip_gitignore = true
 float_to_top = false
 
 [tool.flake8]
-select = "ANN,B,B9,C,C4,D,DAR,F,S,SC"
+select = "ANN,B,B901,B902,B903,C,C4,D,DAR,F,S,SC"
 ignore = "ANN101,S101"
 exclude = [".tests/*"]
 max-line-length = 88

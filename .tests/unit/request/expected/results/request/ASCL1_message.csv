@@ -1,0 +1,2 @@
+gencodeId,geneSymbol,tissueSiteDetailId,transcriptId,median,unit,datasetId
+ENSG00000139352,ASCL1,Brain_Hypothalamus,ENST00000266744,5.269999980926514,read count,gtex_v8

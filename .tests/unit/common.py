@@ -57,33 +57,12 @@ class OutputChecker:
         sp.check_output(["cmp", generated_file, expected_file])
 
 
-class ShaChecker(OutputChecker):
-    def _sha256sum(self, file):
+def file_diff(self, gen_file, ex_file):
+    # with block for file opening prevents easy comprehension
+    contents = []
+    for file in [gen_file, ex_file]:
         with open(file, "r") as f:
-            val = hashlib.sha256("".join([l for l in f.readlines()]).encode("utf8"))
-        return val.hexdigest()
-
-    def _compare_sha256(self, generated_file, expected_file):
-        assert self._sha256sum(generated_file) == self._sha256sum(
-            expected_file
-        ), "sha256 checksums do not match"
-
-    def _file_diff(self, gen_file, ex_file):
-        # with block for file opening prevents easy comprehension
-        contents = []
-        for file in [gen_file, ex_file]:
-            with open(file, "r") as f:
-                contents.append(f.readlines())
-        sys.stderr.writelines(
-            unified_diff(*contents, fromfile="Generated File", tofile="Expected File")
-        )
-
-    def compare_files(self, generated_file, expected_file):
-        # Only needed for the gtf file
-        if "MANE" in str(generated_file) or "gencode" in str(generated_file):
-            try:
-                self._compare_sha256(generated_file, expected_file)
-            except AssertionError:
-                self._file_diff(generated_file, expected_file)
-        else:
-            sp.check_output(["cmp", generated_file, expected_file])
+            contents.append(f.readlines())
+    sys.stderr.writelines(
+        unified_diff(*contents, fromfile="Generated File", tofile="Expected File")
+    )

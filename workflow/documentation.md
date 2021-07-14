@@ -3,13 +3,20 @@
 This information is also available as the docstring for the analysis script,
 where apropriate.
 
-## Rule: ids
+## Resource: gencode.v26.annotations
 
-Retrieves the Gencode v26 annotations.
+This is provided as a resource to the user.
+It was retrieved using the following command:
 
-The website from which the annotations are retrieved is specified in
-[config/config.yaml](../config/config.yaml)
-under `gencode_url` and can be altered by the user.
+```shell
+wget -qO- http://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_26/gencode.v26.annotation.gtf.gz |
+gzip -dc |
+grep -w gene |
+cut -f9 |
+cut -d ' ' -f2,6 |
+tr -d ';\"'
+> resources/gencode.v26.annotation
+```
 
 This rule retrieves the annotated gtf file using `wget`
 and decompresses it using `gzip`.
@@ -17,13 +24,12 @@ The apropriate fields are selected using `cut`
 and unnecessary characters (here, ; and ") are removed with `tr`
 before the file is directed to `resources/gencode.v26.annotation`.
 
-## Rule: mane
+## Resource: MANE.csv
 
-Download the summary file from the MANE project.
-
-The website from which the annotations are retrieved is specified in
-[config/config.yaml](../config/config.yaml)
-under `mane_url` and can be altered by the user.
+The summary file from the MANE project is provided as a resource for the user.
+It was retrieved using the `workflow/scripts/mane.py` script,
+though this is **not** run by snakemake any more,
+as it is provided as a resource.
 
 These comments are taken from the `workflow/scripts/mane.py` docstring:
 
