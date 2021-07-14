@@ -1,0 +1,2 @@
+gencodeId,geneSymbol,tissueSiteDetailId,transcriptId,median,unit,datasetId,refseq,#NCBI_GeneID,HGNC_ID,name,RefSeq_prot,Ensembl_prot,MANE_status,GRCh38_chr,chr_start,chr_end,chr_strand
+ENSG00000188909,BSX,Brain_Hypothalamus,ENST00000343035,0.1099999994039535,read count,gtex_v8,NM_001098169,GeneID:390259,HGNC:20450,brain specific homeobox,NP_001091639.1,ENSP00000344285.2,MANE Select,11,122977570,122981834,-

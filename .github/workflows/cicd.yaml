@@ -42,6 +42,8 @@ jobs:
           snakefmt workflow
       - name: Snakemake unit tests
         run: pytest .tests/unit
+      - name: Snakemake integration tests
+        run: pytest .tests/integration
 
   release:
     runs-on: ubuntu-latest
