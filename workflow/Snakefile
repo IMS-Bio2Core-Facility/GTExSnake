@@ -6,7 +6,7 @@ container: "docker://condaforge/mambaforge:4.10.1-0"
 
 rule all:
     input:
-        "results/process/sorted_isoforms.xlsx",
+        expand("results/process/{gene}_isoforms.csv", gene=config["gene_ids"]),
 
 
 rule ids:
@@ -85,7 +85,7 @@ rule process:
         bm=expand("results/biomart/{gene}_message.csv", gene=config["gene_ids"]),
         mane="resources/MANE.csv",
     output:
-        data="results/process/sorted_isoforms.xlsx",
+        data=expand("results/process/{gene}_isoforms.csv", gene=config["gene_ids"]),
     log:
         "logs/process.log",
     benchmark:

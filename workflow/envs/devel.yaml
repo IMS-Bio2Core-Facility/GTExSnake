@@ -19,4 +19,4 @@ dependencies:
   - pip==21.1.3
   - pip:
     - commitizen
-    - gtexquery==0.2.2
+    - gtexquery==1.0.0

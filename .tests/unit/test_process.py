@@ -32,7 +32,7 @@ def test_process():
                 "python",
                 "-m",
                 "snakemake",
-                "results/process/sorted_isoforms.xlsx",
+                "results/process/ASCL1_isoforms.csv",
                 "-j1",
                 "--keep-target-files",
                 "--use-conda",

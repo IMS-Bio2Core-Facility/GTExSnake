@@ -10,9 +10,11 @@ the MANE data is added using a left merge,
 so as to only keep the data from the GTEx query.
 """
 if __name__ == "__main__":
+    import concurrent.futures
+
     import pandas as pd
+    from gtexquery.data_handling.process import merge_data
     from gtexquery.logs.get_logger import get_logger
-    from gtexquery.multithreading.process import Pipeline
 
     INS = snakemake.input  # noqa: F821
     LOGS = snakemake.log[0]  # noqa: F821
@@ -23,8 +25,7 @@ if __name__ == "__main__":
 
     mane = pd.read_csv(INS["mane"], index_col=0)
 
-    with pd.ExcelWriter(OUTS["data"], engine="openpyxl") as writer:
-        pl = Pipeline(
-            gtex=INS["gtex"], bm=INS["bm"], writer=writer, mane=mane, maxworkers=THREADS
+    with concurrent.futures.ThreadPoolExecutor(max_workers=THREADS) as ex:
+        ex.map(
+            merge_data, INS["gtex"], INS["bm"], [mane] * len(INS["gtex"]), OUTS["data"]
         )
-        pl.run()
