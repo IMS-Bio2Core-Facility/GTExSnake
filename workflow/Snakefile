@@ -7,7 +7,7 @@ configfile: "config/config.yaml"
 validate(config, "schema/config.schema.yaml")
 
 
-container: "docker://condaforge/mambaforge:4.10.1-0"
+container: "docker://condaforge/mambaforge:4.10.3-1"
 
 
 rule all:
