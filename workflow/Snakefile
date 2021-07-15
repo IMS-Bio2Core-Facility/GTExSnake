@@ -1,4 +1,10 @@
+from snakemake.utils import validate
+
+
 configfile: "config/config.yaml"
+
+
+validate(config, "schema/config.schema.yaml")
 
 
 container: "docker://condaforge/mambaforge:4.10.1-0"

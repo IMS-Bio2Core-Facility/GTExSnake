@@ -1,0 +1,17 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+
+description: Configuration File Schema
+
+properties:
+  region:
+    description: GTEx tissue region for query
+    type: string
+  gene_ids:
+    description: Array of gene symbol provided as all upper case
+    type: array
+    items: {type: string}
+
+additionalProperties: false
+required:
+  - region
+  - gene_ids
