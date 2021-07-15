@@ -1,4 +1,4 @@
-snakemake==6.4.0
+snakemake==6.5.3
 singularity==3.7.1
 pytest==6.2.4
 snakefmt==0.4.1
