@@ -38,6 +38,7 @@ def test_biomart():
                 "results/biomart/ASCL1_message.csv",  # errors if 2 files specified
                 "-j1",
                 "--keep-target-files",
+                "--use-singularity",
                 "--use-conda",
                 "--conda-frontend",
                 "mamba",

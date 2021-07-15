@@ -35,6 +35,7 @@ def test_integration():
                 "results/process/ASCL1_isoforms.csv",
                 "-j1",
                 "--keep-target-files",
+                "--use-singularity",
                 "--use-conda",
                 "--conda-frontend",
                 "mamba",

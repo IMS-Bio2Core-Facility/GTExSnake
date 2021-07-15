@@ -6,6 +6,7 @@ channels:
 dependencies:
   - python==3.9.5
   - snakemake==6.4.0
+  - singularity==3.7.1
   - requests==2.25.1
   - pandas==1.2.4
   - openpyxl==3.0.7
