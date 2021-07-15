@@ -15,54 +15,5 @@ rule all:
         expand("results/process/{gene}_isoforms.csv", gene=config["gene_ids"]),
 
 
-rule request:
-    input:
-        lut="resources/gencode.v26.annotation",
-    params:
-        gene_ids=config["gene_ids"],
-        region=config["region"],
-    output:
-        data=expand("results/request/{gene}_message.csv", gene=config["gene_ids"]),
-    log:
-        "results/logs/request.log",
-    benchmark:
-        "results/benchmarks/request.txt"
-    threads: workflow.cores
-    conda:
-        "envs/request.yaml"
-    script:
-        "scripts/request.py"
-
-
-rule biomart:
-    input:
-        data=expand("results/request/{gene}_message.csv", gene=config["gene_ids"]),
-    output:
-        data=expand("results/biomart/{gene}_message.csv", gene=config["gene_ids"]),
-    log:
-        "results/logs/biomart.log",
-    benchmark:
-        "results/benchmarks/biomart.txt"
-    threads: workflow.cores
-    conda:
-        "envs/biomart.yaml"
-    script:
-        "scripts/biomart.py"
-
-
-rule process:
-    input:
-        gtex=expand("results/request/{gene}_message.csv", gene=config["gene_ids"]),
-        bm=expand("results/biomart/{gene}_message.csv", gene=config["gene_ids"]),
-        mane="resources/MANE.csv",
-    output:
-        data=expand("results/process/{gene}_isoforms.csv", gene=config["gene_ids"]),
-    log:
-        "results/logs/process.log",
-    benchmark:
-        "results/benchmarks/process.txt"
-    threads: workflow.cores
-    conda:
-        "envs/process.yaml"
-    script:
-        "scripts/process.py"
+include: "rules/api_queries.smk"
+include: "rules/process_data.smk"
