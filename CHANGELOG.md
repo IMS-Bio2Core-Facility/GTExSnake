@@ -2,6 +2,9 @@
 
 <!--next-version-placeholder-->
 
+## v1.1.1 (2021-07-20)
+
+
 ## v1.1.0 (2021-07-15)
 ### Feature
 * **workflow:** Add schema validation ([`0b35f95`](https://github.com/IMS-Bio2Core-Facility/GTExSnake/commit/0b35f95e8155fc7cea6b95223f66ec3ca262ace6))
