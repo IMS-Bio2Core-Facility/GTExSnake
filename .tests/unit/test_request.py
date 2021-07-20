@@ -39,7 +39,7 @@ def test_request():
                 "results/request/BSX_message.csv",
                 "-j1",
                 "--keep-target-files",
-                # "--use-singularity",
+                "--use-singularity",
                 "--use-conda",
                 "--conda-frontend",
                 "mamba",

@@ -35,10 +35,11 @@ def test_biomart():
                 "python",
                 "-m",
                 "snakemake",
-                "results/biomart/ASCL1_message.csv",  # errors if 2 files specified
+                "results/biomart/ASCL1_message.csv",
+                "results/biomart/BSX_message.csv",
                 "-j1",
                 "--keep-target-files",
-                # "--use-singularity",
+                "--use-singularity",
                 "--use-conda",
                 "--conda-frontend",
                 "mamba",

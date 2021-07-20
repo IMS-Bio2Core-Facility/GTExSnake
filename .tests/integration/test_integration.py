@@ -24,7 +24,10 @@ def test_integration():
         shutil.copytree(config_path, workdir / "config")
 
         # dbg
-        print("results/process/ASCL1_isoforms.csv", file=sys.stderr)
+        print(
+            "results/process/ASCL1_isoforms.csv results/process/BSX_isoforms.csv",
+            file=sys.stderr,
+        )
 
         # Run the test job.
         sp.check_output(
@@ -33,9 +36,10 @@ def test_integration():
                 "-m",
                 "snakemake",
                 "results/process/ASCL1_isoforms.csv",
+                "results/process/BSX_isoforms.csv",
                 "-j1",
                 "--keep-target-files",
-                # "--use-singularity",
+                "--use-singularity",
                 "--use-conda",
                 "--conda-frontend",
                 "mamba",
