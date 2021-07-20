@@ -35,7 +35,7 @@ def test_process():
                 "results/process/ASCL1_isoforms.csv",
                 "-j1",
                 "--keep-target-files",
-                "--use-singularity",
+                # "--use-singularity",
                 "--use-conda",
                 "--conda-frontend",
                 "mamba",

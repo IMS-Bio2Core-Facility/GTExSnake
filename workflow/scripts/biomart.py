@@ -23,9 +23,8 @@ to provide some clarity to the situation.
 if __name__ == "__main__":
     import concurrent.futures
 
-    # import pandas as pd
+    from gtexquery.data_handling.biomart import biomart_request
     from gtexquery.logs.get_logger import get_logger
-    from gtexquery.multithreading.biomart import concurrent_biomart
 
     INPUTS = snakemake.input  # noqa: F821
     LOGS = snakemake.log[0]  # noqa: F821
@@ -35,4 +34,4 @@ if __name__ == "__main__":
     logger = get_logger(__name__, LOGS)
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=THREADS) as ex:
-        ex.map(concurrent_biomart, INPUTS["data"], OUTS["data"])
+        ex.map(biomart_request, INPUTS["data"], OUTS["data"])
