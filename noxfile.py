@@ -10,7 +10,6 @@ LOCATIONS: list[str] = [
 ]
 VERSIONS: list[str] = ["3.9"]
 PIP_PARAMS: list[str] = ["-r"]
-CONDA_PARAMS: list[str] = ["-c", "bioconda", "-c", "conda-forge", "--file"]
 
 nox.options.stop_on_first_error = True
 nox.options.default_venv_backend = "virtualenv"
@@ -59,5 +58,5 @@ def type(session: Session) -> None:
 def security(session: Session) -> None:
     """Check security safety."""
     args = session.posargs or []
-    session.conda_install(*CONDA_PARAMS, "workflow/envs/security.txt")
-    session.run("safety", "check", "--bare", *args)
+    session.install("safety")
+    session.run("safety", "check", "-r", "workflow/envs/security.txt", *args)

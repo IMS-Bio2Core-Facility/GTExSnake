@@ -1,6 +1,7 @@
 # Contributing
 
 > :warning: **TLDR**
+>
 > Create a conda environment with:
 >
 >     ```shell
@@ -11,6 +12,10 @@
 >
 > then commit with `cz commit`,
 > and everything should take care of itself!
+
+> :warning: Linux-Dependent
+>
+> Due to dependencies on Singularity, these steps are Linux specific.
 
 Welcome, friend!
 Open-source software isn't open open-source without the community.

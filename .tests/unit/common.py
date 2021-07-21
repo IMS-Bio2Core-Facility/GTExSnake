@@ -36,7 +36,10 @@ class OutputChecker:
                     str(f).startswith(".snakemake")
                     or str(f).endswith(".txt")
                     or str(f).endswith(".log")
-                    or str(f).startswith("config")
+                    or "config" in str(f)  # Bioservices...
+                    or str(f).startswith(
+                        ".cache"
+                    )  # these turn up when testing with singularity
                     or str(f).startswith(
                         "resources"
                     )  # these turn up in integration tests

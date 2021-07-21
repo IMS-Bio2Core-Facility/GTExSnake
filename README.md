@@ -42,16 +42,21 @@ If you prefer a vanilla conda installation,
 you can always try `mamba` following the instructions at the above snakemake link.
 Once you have conda installed,
 install snakemake as outlined on their page
-(again, see the above link).
+(again, see the above link)
+and activate your snakemake environment.
 
-Singularity can be a bit of a nuisance to install
-(at least in my experience).
-I would recommend a Linux OS
-(it's most straightforward on CentOS/RHEL  - hello AWS!)
-and following the instructions in their repository
+If you are running on a Linux system,
+then singularity can be installed from conda like so:
+
+```shell
+conda install -n snakemake -c conda-forge singularity
+```
+
+It's a bit more challenging for other operating systems.
+Your best bet is to follow their instructions
 [here][sing_install].
-If you decide not to install Singularity,
-don't worry!
+But don't worry!
+**Singularity is _not_ regquired!**
 Snakemake will still run each step in its own Conda environment,
 it just won't put each Conda environment in a container.
 
@@ -62,7 +67,7 @@ page on github and download the most recent version.
 The following will do the trick:
 
 ```shell
-curl -s https://api.github.com/repos/IMS-Bio2Core-Facility/BIC086/releases/latest |
+curl -s https://api.github.com/repos/IMS-Bio2Core-Facility/GTExSnake/releases/latest |
 grep tarball_url |
 cut -d " " -f 4 |
 tr -d '",' |
@@ -83,7 +88,7 @@ for the bleeding edge,
 please clone the repo like so:
 
 ```shell
-git clone https://github.com/IMS-Bio2Core-Facility/BIC086
+git clone https://github.com/IMS-Bio2Core-Facility/GTExSnake
 ```
 
 > :warning: **Heads Up!**
@@ -91,7 +96,7 @@ git clone https://github.com/IMS-Bio2Core-Facility/BIC086
 > as it contains all active development.
 
 However you choose to install it,
-`cd` into the directory and activate your snakemake conda environment.
+`cd` into the directory.
 
 ### Running
 
@@ -143,7 +148,7 @@ and will do our best to keep abreast of API changes that impact the pipeline.
 ## Data
 
 The pipeline requires no input data other than a list of gene names specified in
-`configuration/snakemake.yaml`.
+[config/config.yaml](./config/config.yaml).
 
 ## References
 
@@ -170,7 +175,7 @@ and be sure to abide by our [code of conduct](./CODE_OF_CONDUCT.md)!
 [snakemake]: https://snakemake.readthedocs.io/en/stable/getting_started/installation.html "Snakemake"
 [singularity]: https://sylabs.io/singularity/ "Singularity"
 [mambaforge]: https://github.com/conda-forge/miniforge#mambaforge "Mambaforge"
-[sing_install]: https://github.com/sylabs/singularity/blob/master/INSTALL.md "Singularity Install"
+[sing_install]: https://sylabs.io/guides/3.8/admin-guide/installation.html#installation-on-windows-or-mac "Singularity Install"
 [releases]: https://github.com/IMS-Bio2Core-Facility/GTExSnake/releases "GTExSnake Releases"
 [snake_catalog]: HOLDING
 [workflowhub]: HOLDING
