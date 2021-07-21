@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v1.1.2 (2021-07-21)
+### Fix
+* **deps:** Migrate to gtexquery v2.0.0 ([`d5ff215`](https://github.com/IMS-Bio2Core-Facility/GTExSnake/commit/d5ff21532aa01cf26c4141ed0f5fab974fa8d82c))
+
 ## v1.1.1 (2021-07-20)
 
 
