@@ -46,6 +46,7 @@ jobs:
         run: pytest .tests/integration
   release:
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: [py_check, snake_check]
     steps:
       - name: Checkout
