@@ -1,2 +1,2 @@
 gencodeId,geneSymbol,tissueSiteDetailId,transcriptId,median,unit,datasetId,refseq,#NCBI_GeneID,HGNC_ID,name,RefSeq_prot,Ensembl_prot,MANE_status,GRCh38_chr,chr_start,chr_end,chr_strand
-ENSG00000139352,ASCL1,Brain_Hypothalamus,ENST00000266744,5.269999980926514,read count,gtex_v8,NM_004316,GeneID:429,HGNC:738,achaete-scute family bHLH transcription factor 1,NP_004307.2,ENSP00000266744.3,MANE Select,12,102957674,102960513,+
+ENSG00000139352,ASCL1,Brain_Hypothalamus,ENST00000266744,5.269999980926514,TPM,gtex_v8,NM_004316,GeneID:429,HGNC:738,achaete-scute family bHLH transcription factor 1,NP_004307.2,ENSP00000266744.3,MANE Select,12,102957674,102960513,+

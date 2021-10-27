@@ -1,2 +1,2 @@
 gencodeId,geneSymbol,tissueSiteDetailId,transcriptId,median,unit,datasetId
-ENSG00000188909,BSX,Brain_Hypothalamus,ENST00000343035,0.1099999994039535,read count,gtex_v8
+ENSG00000188909,BSX,Brain_Hypothalamus,ENST00000343035,0.1099999994039535,TPM,gtex_v8
