@@ -32,9 +32,8 @@ if __name__ == "__main__":
     import concurrent.futures
 
     import pandas as pd
-    from gtexquery.data_handling.request import lut_check
+    from gtexquery.data_handling.request import gtex_request, lut_check
     from gtexquery.logs.get_logger import get_logger
-    from gtexquery.multithreading.request import gtex_request
 
     INPUTS = snakemake.input  # noqa: F821
     LOGS = snakemake.log[0]  # noqa: F821
