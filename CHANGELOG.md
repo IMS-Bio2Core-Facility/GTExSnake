@@ -2,6 +2,14 @@
 
 <!--next-version-placeholder-->
 
+## v1.2.0 (2021-10-27)
+### Feature
+* **workflow:** Support snakemake report ([`2cb199f`](https://github.com/IMS-Bio2Core-Facility/GTExSnake/commit/2cb199fcb827737b745a5b4f71ccdb5c9bc5119f))
+* **repo:** Comply to standardised usage ([`a860777`](https://github.com/IMS-Bio2Core-Facility/GTExSnake/commit/a86077797d23c61abc086f4c764b6f48cc5cacec))
+
+### Fix
+* **scripts:** Correct import ([`170d0a3`](https://github.com/IMS-Bio2Core-Facility/GTExSnake/commit/170d0a3a0b4b0af8ec0e4b28a6735ef63482d7c0))
+
 ## v1.1.2 (2021-07-21)
 ### Fix
 * **deps:** Migrate to gtexquery v2.0.0 ([`d5ff215`](https://github.com/IMS-Bio2Core-Facility/GTExSnake/commit/d5ff21532aa01cf26c4141ed0f5fab974fa8d82c))
