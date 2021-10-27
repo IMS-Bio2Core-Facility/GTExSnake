@@ -4,7 +4,10 @@ rule process:
         bm=rules.biomart.output.data,
         mane="resources/MANE.csv",
     output:
-        data=expand("results/process/{gene}_isoforms.csv", gene=config["gene_ids"]),
+        data=report(
+            expand("results/process/{gene}_isoforms.csv", gene=config["gene_ids"]),
+            caption="../report/processed_data.rst",
+        ),
     log:
         "results/logs/process.log",
     benchmark:

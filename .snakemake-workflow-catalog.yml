@@ -1,9 +1,6 @@
 usage:
-  mandatory-flags: # optional definition of additional flags
-    desc:
-    flags:
   software-stack-deployment:
     conda: true
     singularity: true
     singularity+conda: true
-  report: false
+  report: true
