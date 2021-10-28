@@ -134,8 +134,7 @@ as we used them.
 
 We also strive to make this pipeline as FAIR/O compliant as possible.
 To that end,
-it will be available both on the [Snakemake workflow catalog][snake_catalog]
-and [Workflowhub][workflowhub],
+it will be available on the [Snakemake workflow catalog][snake_catalog]
 in addition to the usual availablility on [Github][repo].
 
 Unfortunately,
@@ -178,6 +177,5 @@ and be sure to abide by our [code of conduct](./CODE_OF_CONDUCT.md)!
 [sing_install]: https://sylabs.io/guides/3.8/admin-guide/installation.html#installation-on-windows-or-mac "Singularity Install"
 [releases]: https://github.com/IMS-Bio2Core-Facility/GTExSnake/releases "GTExSnake Releases"
 [snake_catalog]: HOLDING
-[workflowhub]: HOLDING
 [repo]: https://github.com/IMS-Bio2Core-Facility/GTExSnake "GTExSnake Repository"
 [MANE]: https://www.ncbi.nlm.nih.gov/refseq/MANE/ "MANE"
