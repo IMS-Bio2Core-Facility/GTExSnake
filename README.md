@@ -8,6 +8,8 @@
 
 A fully concurrent pipeline for querying transcript-level GTEx data in specific tissues
 
+**_Find us in the "Standardized Usage" Section of the [Snakemake Workflow Catalog][sm_wc]_**
+
 If you find the project useful,
 leaves us a star on [github][stars]!
 
@@ -23,28 +25,13 @@ In this case, the `medianTranscriptExpression` query provides the necessary data
 It returns the median expression of each transcript for a gene in a given tissue.
 Here, we query a list of genes against a region-specific subset of GTEx.
 
-## Pipeline
+## Notes on Installation
 
-### Necessary Software
+A full walkthrough on how to install and use this pipeline
+can be found [here][sm_wc].
 
-This pipeline needs [conda][conda]
-and [snakemake][snakemake]
-installed,
-and runs best if you also have [singularity][singularity]
-installed,
-though it's not required.
-
-Snakemake recommends using [mambaforge][mambaforge]
-as your base conda,
-which I would also recommend.
-Installation instructions are at the above link.
-If you prefer a vanilla conda installation,
-you can always try `mamba` following the instructions at the above snakemake link.
-Once you have conda installed,
-install snakemake as outlined on their page
-(again, see the above link)
-and activate your snakemake environment.
-
+To take advantage of Singularity,
+you'll need to install that separately.
 If you are running on a Linux system,
 then singularity can be installed from conda like so:
 
@@ -61,6 +48,10 @@ Snakemake will still run each step in its own Conda environment,
 it just won't put each Conda environment in a container.
 
 ### Get the Source Code
+
+Alternatively,
+you may grab the source code.
+You likely will not need these steps if you aren't planning to contribute.
 
 Navigate to our [release][releases]
 page on github and download the most recent version.
@@ -98,30 +89,6 @@ git clone https://github.com/IMS-Bio2Core-Facility/GTExSnake
 However you choose to install it,
 `cd` into the directory.
 
-### Running
-
-Once you've installed the above software,
-and fetched the code,
-running the pipeline is as simple as:
-
-```shell
-snakemake --use-conda --use-singularity --cores 6
-```
-
-If you aren't using `singularity`,
-then leave off the apropriate flag, as so:
-
-```shell
-snakemake --use-conda --cores 6
-```
-
-And `snakemake` will automatically leave it off.
-
-### Configuration
-
-For more on how to configure your custom run,
-please see [config/README.md](./config/README.md).
-
 ## Reproducibility
 
 Reproducibility results are a cornerstone of the scientific process.
@@ -134,7 +101,7 @@ as we used them.
 
 We also strive to make this pipeline as FAIR/O compliant as possible.
 To that end,
-it will be available on the [Snakemake workflow catalog][snake_catalog]
+it will be available on the [Snakemake workflow catalog][sm_wc]
 in addition to the usual availablility on [Github][repo].
 
 Unfortunately,
@@ -176,6 +143,6 @@ and be sure to abide by our [code of conduct](./CODE_OF_CONDUCT.md)!
 [mambaforge]: https://github.com/conda-forge/miniforge#mambaforge "Mambaforge"
 [sing_install]: https://sylabs.io/guides/3.8/admin-guide/installation.html#installation-on-windows-or-mac "Singularity Install"
 [releases]: https://github.com/IMS-Bio2Core-Facility/GTExSnake/releases "GTExSnake Releases"
-[snake_catalog]: HOLDING
+[sm_wc]: https://github.com/IMS-Bio2Core-Facility/GTExSnake "Usage Instructions"
 [repo]: https://github.com/IMS-Bio2Core-Facility/GTExSnake "GTExSnake Repository"
 [MANE]: https://www.ncbi.nlm.nih.gov/refseq/MANE/ "MANE"
